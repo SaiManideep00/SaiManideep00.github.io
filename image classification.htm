@@ -233,7 +233,8 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� input_shape=(96, 96, 3),</span
+        >
+          input_shape=(96, 96, 3),</span
         >
       </p>
 
@@ -249,7 +250,8 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� include_top=False</span
+        >
+          include_top=False</span
         >
       </p>
 
@@ -297,7 +299,8 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� backbone,</span
+        >
+          backbone,</span
         >
       </p>
 
@@ -313,7 +316,8 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� tf.keras.layers.Conv2D(128, 3, padding='same',
+        >
+          tf.keras.layers.Conv2D(128, 3, padding='same',
           activation='relu'),</span
         >
       </p>
@@ -330,7 +334,8 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� tf.keras.layers.GlobalAveragePooling2D(),</span
+        >
+          tf.keras.layers.GlobalAveragePooling2D(),</span
         >
       </p>
 
@@ -346,7 +351,8 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� tf.keras.layers.Dense(128, activation='relu'),</span
+        >
+          tf.keras.layers.Dense(128, activation='relu'),</span
         >
       </p>
 
@@ -362,7 +368,8 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� tf.keras.layers.Dropout(0.3),</span
+        >
+          tf.keras.layers.Dropout(0.3),</span
         >
       </p>
 
@@ -378,7 +385,8 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� tf.keras.layers.Dense(7, activation='softmax')</span
+        >
+          tf.keras.layers.Dense(7, activation='softmax')</span
         >
       </p>
 
@@ -426,8 +434,9 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� optimizer=tf.keras.optimizers.Adam(learning_rate=0.001,
-          beta_1=0.9, beta_2=0.999, epsilon=1e-07),</span
+        >
+          optimizer=tf.keras.optimizers.Adam(learning_rate=0.001, beta_1=0.9,
+          beta_2=0.999, epsilon=1e-07),</span
         >
       </p>
 
@@ -443,7 +452,8 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� loss = 'categorical_crossentropy',</span
+        >
+          loss = 'categorical_crossentropy',</span
         >
       </p>
 
@@ -459,7 +469,8 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� metrics=['accuracy' ,
+        >
+          metrics=['accuracy' ,
           tf.keras.metrics.Precision(name='precision'),tf.keras.metrics.Recall(name='recall')]</span
         >
       </p>
@@ -524,7 +535,8 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� train_dataset,</span
+        >
+          train_dataset,</span
         >
       </p>
 
@@ -540,7 +552,8 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� steps_per_epoch=len(train_labels)//BATCH_SIZE,</span
+        >
+          steps_per_epoch=len(train_labels)//BATCH_SIZE,</span
         >
       </p>
 
@@ -556,7 +569,8 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� epochs=12,</span
+        >
+          epochs=12,</span
         >
       </p>
 
@@ -572,7 +586,8 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� callbacks=[early_stopping],</span
+        >
+          callbacks=[early_stopping],</span
         >
       </p>
 
@@ -588,7 +603,8 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� validation_data=val_dataset,</span
+        >
+          validation_data=val_dataset,</span
         >
       </p>
 
@@ -604,7 +620,8 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� validation_steps = len(valid_labels)//BATCH_SIZE,</span
+        >
+          validation_steps = len(valid_labels)//BATCH_SIZE,</span
         >
       </p>
 
@@ -620,7 +637,8 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� class_weight=class_weight</span
+        >
+          class_weight=class_weight</span
         >
       </p>
 
@@ -1060,7 +1078,8 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� train_dataset,</span
+        >
+          train_dataset,</span
         >
       </p>
 
@@ -1076,7 +1095,8 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� steps_per_epoch=len(train_labels)//BATCH_SIZE,</span
+        >
+          steps_per_epoch=len(train_labels)//BATCH_SIZE,</span
         >
       </p>
 
@@ -1092,7 +1112,7 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� epochs=8,</span
+          >epochs=8,</span
         >
       </p>
 
@@ -1108,7 +1128,8 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� callbacks=[checkpoint , early_stop],</span
+        >
+          callbacks=[checkpoint , early_stop],</span
         >
       </p>
 
@@ -1124,7 +1145,8 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� validation_data=val_dataset,</span
+        >
+          validation_data=val_dataset,</span
         >
       </p>
 
@@ -1140,7 +1162,8 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� validation_steps = len(valid_labels)//BATCH_SIZE,</span
+        >
+          validation_steps = len(valid_labels)//BATCH_SIZE,</span
         >
       </p>
 
@@ -1156,7 +1179,7 @@
       >
         <span
           style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
-          >��� class_weight=class_weight</span
+          >class_weight=class_weight</span
         >
       </p>
 
@@ -1523,7 +1546,7 @@ style='font-size:10.5pt;color:black'>cnn=models.Sequential([</span></pre>
           word-break: break-all;
         "
       ><span
-style='font-size:10.5pt;color:black'>��� layers.Conv2D(filters=256,kernel_size=(4,4),activation='relu',input_shape=(96,96,3)),</span></pre>
+style='font-size:10.5pt;color:black'> layers.Conv2D(filters=256,kernel_size=(4,4),activation='relu',input_shape=(96,96,3)),</span></pre>
       <pre
         style="
           background: white;
@@ -1531,7 +1554,7 @@ style='font-size:10.5pt;color:black'>��� layers.Conv2D(filters=256,kernel_
           word-break: break-all;
         "
       ><span
-style='font-size:10.5pt;color:black'>��� layers.MaxPooling2D((3,3)),</span></pre>
+style='font-size:10.5pt;color:black'>layers.MaxPooling2D((3,3)),</span></pre>
       <pre
         style="
           background: white;
@@ -1539,7 +1562,7 @@ style='font-size:10.5pt;color:black'>��� layers.MaxPooling2D((3,3)),</span
           word-break: break-all;
         "
       ><span
-style='font-size:10.5pt;color:black'>��� layers.Conv2D(filters=256,kernel_size=(4,4),activation='relu',input_shape=(96,96,3)),</span></pre>
+style='font-size:10.5pt;color:black'> layers.Conv2D(filters=256,kernel_size=(4,4),activation='relu',input_shape=(96,96,3)),</span></pre>
       <pre
         style="
           background: white;
@@ -1547,7 +1570,7 @@ style='font-size:10.5pt;color:black'>��� layers.Conv2D(filters=256,kernel_
           word-break: break-all;
         "
       ><span
-style='font-size:10.5pt;color:black'>��� layers.MaxPooling2D((3,3)),</span></pre>
+style='font-size:10.5pt;color:black'> layers.MaxPooling2D((3,3)),</span></pre>
       <pre
         style="
           background: white;
@@ -1555,7 +1578,7 @@ style='font-size:10.5pt;color:black'>��� layers.MaxPooling2D((3,3)),</span
           word-break: break-all;
         "
       ><span
-style='font-size:10.5pt;color:black'>��� </span></pre>
+style='font-size:10.5pt;color:black'> </span></pre>
       <pre
         style="
           background: white;
@@ -1563,7 +1586,7 @@ style='font-size:10.5pt;color:black'>��� </span></pre>
           word-break: break-all;
         "
       ><span style='font-size:
-10.5pt;color:black'>����layers.Flatten(),</span></pre>
+10.5pt;color:black'>layers.Flatten(),</span></pre>
       <pre
         style="
           background: white;
@@ -1611,7 +1634,7 @@ style='font-size:10.5pt;color:black'>cnn.compile(</span></pre>
           word-break: break-all;
         "
       ><span
-style='font-size:10.5pt;color:black'>��� optimizer='adam',</span></pre>
+style='font-size:10.5pt;color:black'> optimizer='adam',</span></pre>
       <pre
         style="
           background: white;
@@ -1619,7 +1642,7 @@ style='font-size:10.5pt;color:black'>��� optimizer='adam',</span></pre>
           word-break: break-all;
         "
       ><span
-style='font-size:10.5pt;color:black'>��� loss = 'categorical_crossentropy',</span></pre>
+style='font-size:10.5pt;color:black'>loss = 'categorical_crossentropy',</span></pre>
       <pre
         style="
           background: white;
@@ -1627,7 +1650,7 @@ style='font-size:10.5pt;color:black'>��� loss = 'categorical_crossentropy'
           word-break: break-all;
         "
       ><span
-style='font-size:10.5pt;color:black'>��� metrics=['accuracy' , tf.keras.metrics.Precision(name='precision'),tf.keras.metrics.Recall(name='recall')]</span></pre>
+style='font-size:10.5pt;color:black'> metrics=['accuracy' , tf.keras.metrics.Precision(name='precision'),tf.keras.metrics.Recall(name='recall')]</span></pre>
       <pre
         style="
           background: white;
@@ -1659,7 +1682,7 @@ color:black'>��� train_dataset,</span></pre>
           word-break: break-all;
         "
       ><span style='font-size:10.5pt;
-color:black'>��� steps_per_epoch=len(train_labels)//BATCH_SIZE,</span></pre>
+color:black'>steps_per_epoch=len(train_labels)//BATCH_SIZE,</span></pre>
       <pre
         style="
           background: white;
@@ -1667,7 +1690,7 @@ color:black'>��� steps_per_epoch=len(train_labels)//BATCH_SIZE,</span></pr
           word-break: break-all;
         "
       ><span
-style='font-size:10.5pt;color:black'>��� epochs=12,</span></pre>
+style='font-size:10.5pt;color:black'> epochs=12,</span></pre>
       <pre
         style="
           background: white;
@@ -1675,7 +1698,7 @@ style='font-size:10.5pt;color:black'>��� epochs=12,</span></pre>
           word-break: break-all;
         "
       ><span
-style='font-size:10.5pt;color:black'>��� callbacks=[early_stopping],</span></pre>
+style='font-size:10.5pt;color:black'> callbacks=[early_stopping],</span></pre>
       <pre
         style="
           background: white;
@@ -1683,7 +1706,7 @@ style='font-size:10.5pt;color:black'>��� callbacks=[early_stopping],</span
           word-break: break-all;
         "
       ><span
-style='font-size:10.5pt;color:black'>��� validation_data=val_dataset,</span></pre>
+style='font-size:10.5pt;color:black'> validation_data=val_dataset,</span></pre>
       <pre
         style="
           background: white;
@@ -1691,7 +1714,7 @@ style='font-size:10.5pt;color:black'>��� validation_data=val_dataset,</spa
           word-break: break-all;
         "
       ><span
-style='font-size:10.5pt;color:black'>��� validation_steps = len(valid_labels)//BATCH_SIZE,</span></pre>
+style='font-size:10.5pt;color:black'> validation_steps = len(valid_labels)//BATCH_SIZE,</span></pre>
       <pre
         style="
           background: white;
@@ -1699,7 +1722,7 @@ style='font-size:10.5pt;color:black'>��� validation_steps = len(valid_labe
           word-break: break-all;
         "
       ><span
-style='font-size:10.5pt;color:black'>��� class_weight=class_weight</span></pre>
+style='font-size:10.5pt;color:black'> class_weight=class_weight</span></pre>
       <pre
         style="
           background: white;
@@ -2020,7 +2043,7 @@ style='font-size:10.5pt;color:black'>history1 = cnn.fit(</span></pre>
           word-break: break-all;
         "
       ><span
-style='font-size:10.5pt;color:black'>��� train_dataset,</span></pre>
+style='font-size:10.5pt;color:black'> train_dataset,</span></pre>
       <pre
         style="
           background: white;
@@ -2028,7 +2051,7 @@ style='font-size:10.5pt;color:black'>��� train_dataset,</span></pre>
           word-break: break-all;
         "
       ><span
-style='font-size:10.5pt;color:black'>��� steps_per_epoch=len(train_labels)//BATCH_SIZE,</span></pre>
+style='font-size:10.5pt;color:black'> steps_per_epoch=len(train_labels)//BATCH_SIZE,</span></pre>
       <pre
         style="
           background: white;
@@ -2036,7 +2059,7 @@ style='font-size:10.5pt;color:black'>��� steps_per_epoch=len(train_labels)
           word-break: break-all;
         "
       ><span
-style='font-size:10.5pt;color:black'>��� epochs=8,</span></pre>
+style='font-size:10.5pt;color:black'> epochs=8,</span></pre>
       <pre
         style="
           background: white;
@@ -2044,7 +2067,7 @@ style='font-size:10.5pt;color:black'>��� epochs=8,</span></pre>
           word-break: break-all;
         "
       ><span
-style='font-size:10.5pt;color:black'>��� callbacks=[checkpoint , early_stop],</span></pre>
+style='font-size:10.5pt;color:black'> callbacks=[checkpoint , early_stop],</span></pre>
       <pre
         style="
           background: white;
@@ -2052,7 +2075,7 @@ style='font-size:10.5pt;color:black'>��� callbacks=[checkpoint , early_sto
           word-break: break-all;
         "
       ><span
-style='font-size:10.5pt;color:black'>��� validation_data=val_dataset,</span></pre>
+style='font-size:10.5pt;color:black'> validation_data=val_dataset,</span></pre>
       <pre
         style="
           background: white;
@@ -2060,7 +2083,7 @@ style='font-size:10.5pt;color:black'>��� validation_data=val_dataset,</spa
           word-break: break-all;
         "
       ><span
-style='font-size:10.5pt;color:black'>��� validation_steps = len(valid_labels)//BATCH_SIZE,</span></pre>
+style='font-size:10.5pt;color:black'> validation_steps = len(valid_labels)//BATCH_SIZE,</span></pre>
       <pre
         style="
           background: white;
@@ -2068,7 +2091,7 @@ style='font-size:10.5pt;color:black'>��� validation_steps = len(valid_labe
           word-break: break-all;
         "
       ><span
-style='font-size:10.5pt;color:black'>��� class_weight=class_weight</span></pre>
+style='font-size:10.5pt;color:black'>class_weight=class_weight</span></pre>
       <pre
         style="
           background: white;
