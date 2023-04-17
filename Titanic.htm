@@ -1,0 +1,2759 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+    <meta name="Generator" content="Microsoft Word 15 (filtered)" />
+    <style>
+      <!--
+       /* Font Definitions */
+       @font-face
+      	{font-family:"Cambria Math";
+      	panose-1:2 4 5 3 5 4 6 3 2 4;}
+      @font-face
+      	{font-family:Calibri;
+      	panose-1:2 15 5 2 2 2 4 3 2 4;}
+       /* Style Definitions */
+       p.MsoNormal, li.MsoNormal, div.MsoNormal
+      	{margin-top:0cm;
+      	margin-right:0cm;
+      	margin-bottom:8.0pt;
+      	margin-left:0cm;
+      	line-height:106%;
+      	font-size:11.0pt;
+      	font-family:"Calibri",sans-serif;}
+      a:link, span.MsoHyperlink
+      	{color:blue;
+      	text-decoration:underline;}
+      .MsoChpDefault
+      	{font-size:10.0pt;
+      	font-family:"Calibri",sans-serif;}
+      @page WordSection1
+      	{size:595.3pt 841.9pt;
+      	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+      div.WordSection1
+      	{page:WordSection1;}
+      -->
+    </style>
+  </head>
+
+  <body lang="EN-IN" link="blue" vlink="#954F72" style="margin: 50px">
+    <div class="WordSection1">
+      <p class="MsoNormal" align="center" style="text-align: center">
+        <b
+          ><span
+            style="
+              font-size: 14pt;
+              line-height: 106%;
+              font-family: 'Times New Roman', serif;
+            "
+            >Titanic- Machine Learning Disaster</span
+          ></b
+        >
+      </p>
+
+      <p class="MsoNormal" style="text-align: justify">
+        <span
+          style="
+            font-size: 13pt;
+            line-height: 106%;
+            font-family: 'Times New Roman', serif;
+          "
+          >This a challenge on Kaggle where we are given a dataset of the
+          passengers on the titanic ship and we need to build a model that
+          predicts the people who survived.</span
+        >
+      </p>
+
+      <p class="MsoNormal" style="text-align: justify">
+        <span
+          style="
+            font-size: 13pt;
+            line-height: 106%;
+            font-family: 'Times New Roman', serif;
+          "
+          >There are two datasets test.csv and train.csv. In train data there is
+          a column named "Survived" which is the target column for us. We need
+          to use test dataset to predict the results.</span
+        >
+      </p>
+
+      <p class="MsoNormal" style="text-align: justify">
+        <span
+          style="
+            font-size: 13pt;
+            line-height: 106%;
+            font-family: 'Times New Roman', serif;
+          "
+          >1. The first step is loading data.</span
+        >
+      </p>
+
+      <p class="MsoNormal" style="text-align: justify">
+        <b
+          ><span
+            style="
+              font-size: 13pt;
+              line-height: 106%;
+              font-family: 'Times New Roman', serif;
+            "
+            >Code:</span
+          ></b
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #af00db;
+          "
+          >import</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;pandas&nbsp;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #af00db;
+          "
+          >as</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;pd</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #af00db;
+          "
+          >import</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;numpy&nbsp;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #af00db;
+          "
+          >as</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;np</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #af00db;
+          "
+          >from</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;google.colab&nbsp;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #af00db;
+          "
+          >import</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;drive</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >drive.mount(</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >&quot;/content/drive&quot;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >)</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >train_data=pd.read_csv(</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >&quot;/content/drive/My&nbsp;Drive/Dataset/train.csv&quot;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >)</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >train_data.head()</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >test_data=pd.read_csv(</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >&quot;/content/drive/My&nbsp;Drive/Dataset/test.csv&quot;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >)</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >test_data.head()</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 13pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >2.The next step is data cleaning. We will see if any null values are
+          present in the data</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 13pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <b
+          ><span
+            style="
+              font-size: 13pt;
+              font-family: 'Times New Roman', serif;
+              color: black;
+            "
+            >Code:</span
+          ></b
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >train_data.isnull().</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #795e26;
+          "
+          >sum</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >()</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <b
+          ><span
+            style="
+              font-size: 13pt;
+              font-family: 'Times New Roman', serif;
+              color: black;
+            "
+            >Output:
+          </span></b
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #212121;
+            background: white;
+          "
+          >PassengerId 0 Survived 0 Pclass 0 Name 0 Sex 0 Age 177 SibSp 0 Parch
+          0 Ticket 0 Fare 0 Cabin 687 Embarked 2 dtype: int64</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #212121;
+            background: white;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <b
+          ><span
+            style="
+              font-size: 13pt;
+              font-family: 'Times New Roman', serif;
+              color: #212121;
+              background: white;
+            "
+            >Code:</span
+          ></b
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >test_data.isnull().</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #795e26;
+          "
+          >sum</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >()</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+        ></span>
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <b
+          ><span
+            style="
+              font-size: 13pt;
+              font-family: 'Times New Roman', serif;
+              color: black;
+            "
+            >Output:</span
+          ></b
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #212121;
+            background: white;
+          "
+          >PassengerId 0 Pclass 0 Name 0 Sex 0 Age 86 SibSp 0 Parch 0 Ticket 0
+          Fare 1 Cabin 327 Embarked 0 dtype: int64</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #212121;
+            background: white;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 13pt;
+            font-family: 'Times New Roman', serif;
+            color: #212121;
+            background: white;
+          "
+          >There are 177 null values in Age column of train data and 86 null
+          values in Age column of test data. Now we fill the null values with
+          the mean value of the age.</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #212121;
+            background: white;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <b
+          ><span
+            style="
+              font-size: 13pt;
+              font-family: 'Times New Roman', serif;
+              color: #212121;
+              background: white;
+            "
+            >Code:</span
+          ></b
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >train_data[</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >'Age'</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >]=train_data[</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >'Age'</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >].fillna(train_data[</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >'Age'</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >].mean())</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >train_data[</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >'Age'</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >].isnull().</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #795e26;
+          "
+          >sum</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >()</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >test_data[</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >'Age'</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >]=test_data[</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >'Age'</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >].fillna(test_data[</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >'Age'</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >].mean())</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >test_data[</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >'Age'</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >].isnull().</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #795e26;
+          "
+          >sum</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >()</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <b
+          ><span
+            style="
+              font-size: 13pt;
+              font-family: 'Times New Roman', serif;
+              color: black;
+            "
+            >Output:</span
+          ></b
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >0 0</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 13pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >3. In the data Age and Fare are not categorical values. We need to
+          convert them to categorical values. We can use cut method in pandas
+          library to divide the values into intervals.</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 13pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <b
+          ><span
+            style="
+              font-size: 13pt;
+              font-family: 'Times New Roman', serif;
+              color: black;
+            "
+            >Code:</span
+          ></b
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >train_data[</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >'agegroup'</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >]=pd.cut(train_data.Age,&nbsp;bins=[</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >0.0</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >3.0</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,&nbsp;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >16.0</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,&nbsp;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >40.0</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >60.0</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >80.1</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >],&nbsp;right=</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: blue;
+          "
+          >False</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,&nbsp;labels=[</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >1</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,&nbsp;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >2</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,&nbsp;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >3</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >4</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >5</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >])</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >test_data[</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >'agegroup'</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >]=pd.cut(test_data.Age,&nbsp;bins=[</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >0.0</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >3.0</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,&nbsp;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >16.0</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,&nbsp;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >40.0</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >60.0</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >80.1</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >],&nbsp;right=</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: blue;
+          "
+          >False</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,&nbsp;labels=[</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >1</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,&nbsp;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >2</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,&nbsp;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >3</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >4</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >5</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >])</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 13pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >A new column named agegroup is added to the data. In contains the
+          labels to which a passenger age belongs to. We add this column to both
+          train data and test data.</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >train_data[</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >'faregroup'</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >]=pd.cut(train_data.Fare,&nbsp;bins=[</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >0</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >100.0</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >200.0</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >300.0</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >512.4000</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >],&nbsp;labels=[&nbsp;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >1</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >2</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >3</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >4</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >])</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >test_data[</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >'faregroup'</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >]=pd.cut(test_data.Fare,&nbsp;bins=[</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >0</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >100.0</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >200.0</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >300.0</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >512.4000</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >],&nbsp;labels=[&nbsp;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >1</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >2</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >3</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >4</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >])</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 13pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >A new column named faregroup is added to the data. In contains the
+          labels to which a passenger fare belongs to. We add this column to
+          both train data and test data.</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 13pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 13pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >4. There are many columns in the data but all are not useful for us.
+          We use only some of the columns.</span
+        >
+      </p>
+
+      <p class="MsoNormal" style="line-height: 14.25pt; background: #fffffe">
+        <span
+          style="
+            font-size: 13pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >The selected columns are:</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+        >
+        </span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >&quot;Pclass&quot;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,&nbsp;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >&quot;Sex&quot;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >&quot;agegroup&quot;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >&quot;faregroup&quot;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >&quot;Embarked&quot;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >&quot;SibSp&quot;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,&nbsp;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >&quot;Parch&quot;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 13pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >5. The next step is model building. I used Random Forest Classifier.
+          I used train data for training the model and test data to predict the
+          results.</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <b
+          ><span
+            style="
+              font-size: 12pt;
+              font-family: 'Times New Roman', serif;
+              color: black;
+            "
+            >Code:</span
+          ></b
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #af00db;
+          "
+          >from</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;sklearn.ensemble&nbsp;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #af00db;
+          "
+          >import</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;RandomForestClassifier</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #af00db;
+          "
+          >from</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;google.colab&nbsp;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #af00db;
+          "
+          >import</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;files</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >y&nbsp;=&nbsp;train_data[</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >&quot;Survived&quot;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >]</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >features&nbsp;=&nbsp;[</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >&quot;Pclass&quot;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,&nbsp;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >&quot;Sex&quot;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >&quot;agegroup&quot;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >&quot;faregroup&quot;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >&quot;Embarked&quot;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >&quot;SibSp&quot;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,&nbsp;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >&quot;Parch&quot;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >]</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >X&nbsp;=&nbsp;pd.get_dummies(train_data[features])</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >X_test&nbsp;=&nbsp;pd.get_dummies(test_data[features])</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >model&nbsp;=&nbsp;RandomForestClassifier(n_estimators=</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >100</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,&nbsp;max_depth=</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >5</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,&nbsp;random_state=</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #098156;
+          "
+          >1</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >)</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >model.fit(X,&nbsp;y)</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >predictions&nbsp;=&nbsp;model.predict(X_test)</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >output&nbsp;=&nbsp;pd.DataFrame({</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >'PassengerId'</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >:&nbsp;test_data.PassengerId,&nbsp;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >'Survived'</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >:&nbsp;predictions})</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >output.to_csv(</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >'submission.csv'</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >,&nbsp;encoding&nbsp;=&nbsp;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >'utf-8-sig'</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >)&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >files.download(</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >'submission.csv'</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >)</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #795e26;
+          "
+          >print</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >(</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: #a31515;
+          "
+          >&quot;Your&nbsp;submission&nbsp;was&nbsp;successfully&nbsp;saved!&quot;</span
+        ><span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >)</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 12pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 13pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >After submitting the generated csv file in Kaggle website, I got a
+          final score of 0.7799 which is slightly higher than the original
+          0.77511</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="
+            font-size: 13pt;
+            font-family: 'Times New Roman', serif;
+            color: black;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <b
+          ><span
+            style="
+              font-size: 13pt;
+              font-family: 'Times New Roman', serif;
+              color: black;
+            "
+            >The final output is</span
+          ></b
+        ><b
+          ><span
+            style="font-size: 13pt; font-family: 'Courier New'; color: black"
+          >
+          </span
+        ></b>
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span style="font-size: 13pt; font-family: 'Courier New'; color: black"
+          >&nbsp;</span
+        >
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span style="color: black"
+          ><img
+            width="602"
+            height="317"
+            id="Picture 1"
+            src="images/image001.jpg"
+        /></span>
+      </p>
+
+      <p
+        class="MsoNormal"
+        style="margin-bottom: 0cm; line-height: 14.25pt; background: #fffffe"
+      >
+        <span
+          style="font-size: 10.5pt; font-family: 'Courier New'; color: black"
+          >&nbsp;</span
+        >
+      </p>
+
+      <p class="MsoNormal" style="text-align: justify">
+        <span
+          style="
+            font-size: 12pt;
+            line-height: 106%;
+            font-family: 'Times New Roman', serif;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p class="MsoNormal" style="text-align: justify">
+        <b
+          ><span
+            style="
+              font-size: 13pt;
+              line-height: 106%;
+              font-family: 'Times New Roman', serif;
+            "
+            >References:</span
+          ></b
+        >
+      </p>
+
+      <p class="MsoNormal" style="text-align: justify">
+        <span
+          style="
+            font-size: 12pt;
+            line-height: 106%;
+            font-family: 'Times New Roman', serif;
+          "
+          >1
+          <a
+            href="https://www.geeksforgeeks.org/ways-to-import-csv-files-in-google-colab/"
+            >Ways to import CSV files in Google Colab - GeeksforGeeks</a
+          >Used code from here to import a file in google colab</span
+        >
+      </p>
+
+      <p class="MsoNormal" style="text-align: justify">
+        <span
+          style="
+            font-size: 12pt;
+            line-height: 106%;
+            font-family: 'Times New Roman', serif;
+          "
+          >2
+          <a
+            href="https://www.geeksforgeeks.org/pandas-cut-continuous-to-categorical/"
+            >Pandas Cut - Continuous to Categorical - GeeksforGeeks</a
+          >
+          Used the syntax of cut method from here. The bins and labels are
+          according to the data.</span
+        >
+      </p>
+
+      <p class="MsoNormal" style="text-align: justify">
+        <span
+          style="
+            font-size: 12pt;
+            line-height: 106%;
+            font-family: 'Times New Roman', serif;
+          "
+          >3
+          <a
+            href="https://www.kaggle.com/code/alexisbcook/titanic-tutorial/notebook"
+            >Titanic Tutorial | Kaggle</a
+          >
+          Used the Random Forest Classifier syntax from here.</span
+        >
+      </p>
+
+      <p class="MsoNormal" style="text-align: justify">
+        <span
+          style="
+            font-size: 12pt;
+            line-height: 106%;
+            font-family: 'Times New Roman', serif;
+          "
+          >4
+          <a
+            href="https://cyublog.com/articles/python-en/colab-pandas-three-ways-to-save-dataframe-data/"
+            >Google Colab: 3 Ways To Save Pandas Dataframe Data (cyublog.com)</a
+          >
+          Used code from here to download a csv file in google colab.</span
+        >
+      </p>
+
+      <p class="MsoNormal" style="text-align: justify">
+        <span
+          style="
+            font-size: 13pt;
+            line-height: 106%;
+            font-family: 'Times New Roman', serif;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p class="MsoNormal" style="text-align: justify">
+        <span
+          style="
+            font-size: 13pt;
+            line-height: 106%;
+            font-family: 'Times New Roman', serif;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p class="MsoNormal" style="text-align: justify">
+        <span
+          style="
+            font-size: 13pt;
+            line-height: 106%;
+            font-family: 'Times New Roman', serif;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p class="MsoNormal" style="text-align: justify">
+        <span
+          style="
+            font-size: 13pt;
+            line-height: 106%;
+            font-family: 'Times New Roman', serif;
+          "
+          >&nbsp;</span
+        >
+      </p>
+
+      <p class="MsoNormal" style="text-align: justify">
+        <b
+          ><span
+            style="
+              font-size: 13pt;
+              line-height: 106%;
+              font-family: 'Times New Roman', serif;
+            "
+            >Contribution:</span
+          ></b
+        >
+      </p>
+
+      <p class="MsoNormal" style="text-align: justify">
+        <span
+          style="
+            font-size: 12pt;
+            line-height: 106%;
+            font-family: 'Times New Roman', serif;
+          "
+          >1 Identified that there are many null values in Age column and filled
+          the null values with mean value of that column.</span
+        >
+      </p>
+
+      <p class="MsoNormal" style="text-align: justify">
+        <span
+          style="
+            font-size: 12pt;
+            line-height: 106%;
+            font-family: 'Times New Roman', serif;
+          "
+          >2 Converted Age column and Fare column into categorical values by
+          defining the bins and labels.</span
+        >
+      </p>
+
+      <p class="MsoNormal" style="text-align: justify">
+        <span
+          style="
+            font-size: 12pt;
+            line-height: 106%;
+            font-family: 'Times New Roman', serif;
+          "
+          >&nbsp;</span
+        >
+      </p>
+    </div>
+    <li>
+      <a href="./assets/Files/Titanic.ipynb" download
+        ><span style="color: black">SourceCode</span></a
+      >
+    </li>
+  </body>
+</html>
